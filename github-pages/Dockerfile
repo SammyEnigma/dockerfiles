@@ -8,7 +8,7 @@
 FROM ruby:2.7-alpine3.16
 # https://www.ruby-lang.org/en/news/2023/03/30/ruby-2-7-8-released/
 
-ENV GITHUB_PAGES_VERSION 230
+ENV GITHUB_PAGES_VERSION 231
 
 RUN set -eux; \
 	\
