@@ -4,13 +4,12 @@
 # PLEASE DO NOT EDIT IT DIRECTLY.
 #
 
-FROM --platform=$BUILDPLATFORM golang:1.21 AS build
+FROM --platform=$BUILDPLATFORM golang:1.21.0 AS build
 
 # https://github.com/moby/buildkit/releases
-ENV BUILDKIT_VERSION 0.14.1
+ENV BUILDKIT_VERSION 0.15.0
 
 COPY \
-	backport-5072-fetch-tags.patch \
 	backport-5096-fix-umask.patch \
 	containerd-arm64-v8.patch \
 	git-no-submodules.patch \
