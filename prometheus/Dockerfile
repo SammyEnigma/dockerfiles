@@ -4,7 +4,7 @@
 # PLEASE DO NOT EDIT IT DIRECTLY.
 #
 
-FROM alpine:3.19
+FROM alpine:3.20
 
 RUN apk add --no-cache bash ca-certificates
 
@@ -12,7 +12,7 @@ WORKDIR /opt/prometheus
 ENV PATH /opt/prometheus:$PATH
 
 # https://github.com/prometheus/prometheus/releases
-ENV PROMETHEUS_VERSION 2.53.0
+ENV PROMETHEUS_VERSION 2.54.1
 
 RUN set -ex; \
 	\
@@ -30,20 +30,20 @@ RUN set -ex; \
 	\
 	filename="prometheus-${PROMETHEUS_VERSION}.linux-${promArch}.tar.gz"; \
 	case "$filename" in \
-		'prometheus-2.53.0.linux-386.tar.gz') sha256='8eaca90bd5da21a99559c4fcdf8026d858eea11dcd5b5fc5f76939fb0f11ce77' ;; \
-		'prometheus-2.53.0.linux-amd64.tar.gz') sha256='d9900a11e3c89261e6416e3c9989858bad7b206af8b6838dfe9a5392d8ddc60d' ;; \
-		'prometheus-2.53.0.linux-arm64.tar.gz') sha256='f3fb3c12db28155a791eba57f293c899ad753677a5aa8c327a80483b23ce98c6' ;; \
-		'prometheus-2.53.0.linux-armv5.tar.gz') sha256='cbb96041bc8fc8a22891966ec4ce52844bbcb70e34e6bcf24901b82e4c0c5bb1' ;; \
-		'prometheus-2.53.0.linux-armv6.tar.gz') sha256='6122db083861027526b2aaaf6cc5324f22c10936657082fb0a99830053e8855a' ;; \
-		'prometheus-2.53.0.linux-armv7.tar.gz') sha256='aabe658a02b7dd12c220d895dd64e7d4b2a5ab7a303cfb51e1767447d31764b4' ;; \
-		'prometheus-2.53.0.linux-mips.tar.gz') sha256='6e30c64d513002f1726524d8d49c2f7e6b5d0b7da6e76c0c37e1992d5aa4c9b1' ;; \
-		'prometheus-2.53.0.linux-mips64.tar.gz') sha256='dc5c78af2d961fa6f817fb462b35606b4b499e64d1cef6221631e5e216c8718c' ;; \
-		'prometheus-2.53.0.linux-mips64le.tar.gz') sha256='7da9460a487bc95d392c940393b17f7d919c7db70fee38eb59b8f4eab3d2b1e1' ;; \
-		'prometheus-2.53.0.linux-mipsle.tar.gz') sha256='ebf9f2e2647d552d92cb0870c1cbd1c175691c6b8de29fcb8046bfa79b100cb9' ;; \
-		'prometheus-2.53.0.linux-ppc64.tar.gz') sha256='964c232c836bfdb7e69f660dde1b5d3c3d5615674d2018567c7d1b4c3cc0d58f' ;; \
-		'prometheus-2.53.0.linux-ppc64le.tar.gz') sha256='962b28660641e26a087e6e8698501b96907d35e9c5c16ab949885000212d603a' ;; \
-		'prometheus-2.53.0.linux-riscv64.tar.gz') sha256='1e190d090051cfdc6bb99e681f472ad60ff5c5a387718474da074ac1f0ae1d69' ;; \
-		'prometheus-2.53.0.linux-s390x.tar.gz') sha256='b19230f3b36187c9496f49fde0a3f3828d535c58cffc545d80cc91492b845b77' ;; \
+		'prometheus-2.54.1.linux-386.tar.gz') sha256='49e5f06a4e4c86db14f3708a59acf19e014d1023aa04f9a4b611c28c2fefa8b1' ;; \
+		'prometheus-2.54.1.linux-amd64.tar.gz') sha256='31715ef65e8a898d0f97c8c08c03b6b9afe485ac84e1698bcfec90fc6e62924f' ;; \
+		'prometheus-2.54.1.linux-arm64.tar.gz') sha256='3d9946ca730f2679bbd63e9d40e559a0ba227a638d237e723af1a99bd7098263' ;; \
+		'prometheus-2.54.1.linux-armv5.tar.gz') sha256='c9a0c56d7ce667ae9ace2b6db048ebaf9b2621ce52b4fcf9e73678a312e3e7dd' ;; \
+		'prometheus-2.54.1.linux-armv6.tar.gz') sha256='0e0d55dfc8e6bea2f75f756db3ed0034f96ad83cb70cf55fad7791c378f114a2' ;; \
+		'prometheus-2.54.1.linux-armv7.tar.gz') sha256='704821beac972a1e232cf2daad1dc159733a20a429a4d24cb2e19d1b7b5dca4d' ;; \
+		'prometheus-2.54.1.linux-mips.tar.gz') sha256='1f78023ab7e888f55730eea9d414f27f560515ecd257cf5e75bea9ff09e51e86' ;; \
+		'prometheus-2.54.1.linux-mips64.tar.gz') sha256='a96a448d4c175894554d4a41a7910b67f3d17f51c6dc669ecbb78a7527ba0825' ;; \
+		'prometheus-2.54.1.linux-mips64le.tar.gz') sha256='446720c181206ced7a45133bd1c63de173186e1d6fbc432e427eca30dd165d9c' ;; \
+		'prometheus-2.54.1.linux-mipsle.tar.gz') sha256='433559f0f0e09aa850f3b18abf79b88185451e1621231bc608b0873d69ba36d0' ;; \
+		'prometheus-2.54.1.linux-ppc64.tar.gz') sha256='df11d5b627a405a3cfd200a76a6c2d8cde6a52d348ca22b3a79af0306ea2c770' ;; \
+		'prometheus-2.54.1.linux-ppc64le.tar.gz') sha256='fcc494f874edef7053abef0a92070dd5fb3dbcce9b44f18839fa68a6e10337a1' ;; \
+		'prometheus-2.54.1.linux-riscv64.tar.gz') sha256='eab1e4e0fcb0c6a3603a67b032bbe2d25006c48499293dc53119529c9164e07c' ;; \
+		'prometheus-2.54.1.linux-s390x.tar.gz') sha256='56f6dfa71853b8d39ccc79b2bd7f55bc7c1d2e1e10f4b226f29e57143836d493' ;; \
 		*) echo >&2 "error: unknown file: $filename"; exit 1 ;; \
 	esac; \
 	wget -O /tmp/prom.tar.gz "https://github.com/prometheus/prometheus/releases/download/v${PROMETHEUS_VERSION}/$filename"; \

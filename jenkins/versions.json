@@ -4,13 +4,13 @@
     "lts"
   ],
   "weekly": {
-    "sha256": "376fff2d54a6996c51087637cb62b960100c7729ccfa405c8b3c013c58fa27ea",
-    "version": "2.464",
+    "sha256": "cdeac3fbbb83875e912ba06065676ec6bee47c00018b9cdf5b99efadd9ef995f",
+    "version": "2.481",
     "repo": "https://pkg.jenkins.io/debian"
   },
   "lts": {
-    "sha256": "b29bb56be98051a03044315138ae8cc64cbcd7cfed52542fc4f8c11ec99d3796",
-    "version": "2.452.2",
+    "sha256": "672f60cf310afa615c5cf51cd5c33466a2c64cbc5ad9d924e7f50634a866bc89",
+    "version": "2.462.3",
     "repo": "https://pkg.jenkins.io/debian-stable"
   }
 }
