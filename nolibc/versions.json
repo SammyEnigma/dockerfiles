@@ -1,6 +1,21 @@
 {
   "linux": {
-    "version": "6.8.12"
+    "moniker": "stable",
+    "version": "6.11.4",
+    "iseol": false,
+    "released": {
+      "timestamp": 1729171697,
+      "isodate": "2024-10-17"
+    },
+    "source": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.11.4.tar.xz",
+    "pgp": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.11.4.tar.sign",
+    "patch": {
+      "full": "https://cdn.kernel.org/pub/linux/kernel/v6.x/patch-6.11.4.xz",
+      "incremental": "https://cdn.kernel.org/pub/linux/kernel/v6.x/incr/patch-6.11.3-4.xz"
+    },
+    "changelog": "https://cdn.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.11.4",
+    "gitweb": "https://git.kernel.org/stable/h/v6.11.4",
+    "diffview": "https://git.kernel.org/stable/ds/v6.11.4/v6.11.3"
   },
   "arches": {
     "amd64": {

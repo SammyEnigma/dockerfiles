@@ -10,7 +10,7 @@
 #
 #   $ docker run -d --name dind --privileged --volume dind:/var/lib/docker tianon/docker-master
 
-FROM golang:1.21-bullseye AS build
+FROM golang:1.22.0-bookworm AS build
 
 RUN set -eux; \
 	apt-get update; \
@@ -33,7 +33,7 @@ ENV DOCKER_BUILDTAGS \
 
 WORKDIR /moby
 
-ARG CLI_GITCOMMIT=4270341cad4e37dd718cefa7395a92b53cca858a
+ARG CLI_GITCOMMIT=8a7c5ae68f42061fa3085736b91a9e831e0eab07
 ENV CLI_GITCOMMIT $CLI_GITCOMMIT
 
 RUN set -eux; \
@@ -54,7 +54,7 @@ RUN set -eux; \
 	docker --version; \
 	ldd /usr/local/bin/docker || :
 
-ARG MOBY_GITCOMMIT=0d1682192282ced1993314e974e5390814fd17ff
+ARG MOBY_GITCOMMIT=b0632b23457112c87b28be1850a17bfb7f9a9eac
 ENV MOBY_GITCOMMIT $MOBY_GITCOMMIT
 
 RUN set -eux; \
@@ -114,9 +114,9 @@ RUN set -eux; \
 		chroot . "./$bin" --version; \
 	done
 
-FROM golang:1.21-bullseye AS buildx
+FROM golang:1.22.0-bookworm AS buildx
 
-ARG BUILDX_GITCOMMIT=04000db8da4b5a1b2c3830cfafb43b02d98c1f5c
+ARG BUILDX_GITCOMMIT=9f0ebd2643482722e54eae975df4193df5b456f1
 ENV BUILDX_GITCOMMIT $BUILDX_GITCOMMIT
 
 RUN set -eux; \
@@ -137,7 +137,7 @@ RUN set -eux; \
 
 # TODO compose?
 
-FROM alpine:3.19
+FROM alpine:3.20
 
 RUN set -eux; \
 	apk add --no-cache \
