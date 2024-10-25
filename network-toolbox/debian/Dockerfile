@@ -1,4 +1,4 @@
-FROM debian:bullseye-slim
+FROM debian:bookworm-slim
 
 RUN set -eux; \
 # dangit, wireshark-common!  *shakes fist*
@@ -23,6 +23,7 @@ RUN set -eux; \
 		nbtscan \
 		net-tools \
 		netcat-openbsd \
+		nftables \
 		nmap \
 		ntpdate \
 		openssh-client \

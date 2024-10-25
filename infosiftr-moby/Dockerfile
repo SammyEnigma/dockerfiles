@@ -17,37 +17,22 @@ RUN set -eux; \
 	; \
 	rm -rf /var/lib/apt/lists/*
 
-# see https://github.com/docker-library/official-images/issues/16830
-# esp. https://github.com/docker-library/official-images/issues/16830#issuecomment-2130971029
-# (TLDR: we need libseccomp2 version 2.5.5+ and stable as of 2024-05-25 only has 2.5.4; https://bugs.debian.org/1071822)
-RUN set -eux; \
-	v="$(dpkg-query --show --showformat '${Version}\n' libseccomp2)"; \
-	if dpkg --compare-versions "$v" '<<' '2.5.5~'; then \
-# TODO deb822
-		echo 'deb http://deb.debian.org/debian unstable main' > /etc/apt/sources.list.d/unstable.list; \
-		apt-get update; \
-		apt-get install -y --no-install-recommends libseccomp2/unstable; \
-		rm -rf /etc/apt/sources.list.d/unstable.list /var/lib/apt/lists/*; \
-	fi; \
-	v="$(dpkg-query --show --showformat '${Version}\n' libseccomp2)"; \
-	dpkg --compare-versions "$v" '>=' '2.5.5~'
-
 # https://apt.tianon.xyz/moby
 # https://apt.tianon.xyz/moby/dists/bookworm/tianon-moby.sources
 RUN echo 'deb [ allow-insecure=yes trusted=yes ] https://apt.tianon.xyz/moby bookworm main' > /etc/apt/sources.list.d/moby.list
 # TODO deb822
 
 # http://apt.tianon.xyz/moby/pool/bookworm/main/moby-engine/
-ENV MOBY_ENGINE_VERSION 23.0.11-2~deb12u0
+ENV MOBY_ENGINE_VERSION 23.0.15-1~deb12u0
 # http://apt.tianon.xyz/moby/pool/bookworm/main/moby-containerd/
-ENV MOBY_CONTAINERD_VERSION 1.6.32-2~deb12u0
+ENV MOBY_CONTAINERD_VERSION 1.6.36-1~deb12u0
 # http://apt.tianon.xyz/moby/pool/bookworm/main/moby-runc/
-ENV MOBY_RUNC_VERSION 1.1.12-1~deb12u0
+ENV MOBY_RUNC_VERSION 1.1.15-1~deb12u0
 
 # http://apt.tianon.xyz/moby/pool/bookworm/main/moby-cli/
-ENV MOBY_CLI_VERSION 23.0.10-1~deb12u0
+ENV MOBY_CLI_VERSION 23.0.15-1~deb12u0
 # http://apt.tianon.xyz/moby/pool/bookworm/main/moby-buildx/
-ENV MOBY_BUILDX_VERSION 0.14.1-1~deb12u0
+ENV MOBY_BUILDX_VERSION 0.17.1-1~deb12u0
 
 RUN set -eux; \
 	\

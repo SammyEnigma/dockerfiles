@@ -7,22 +7,25 @@
 FROM --platform=$BUILDPLATFORM golang:1.21 AS build
 
 # https://github.com/moby/buildkit/releases
-ENV BUILDKIT_VERSION 0.14.1
+ENV BUILDKIT_VERSION 0.16.0
 
 COPY \
-	backport-5072-fetch-tags.patch \
-	backport-5096-fix-umask.patch \
+	backport-5372-sbom-args.patch \
+	backport-moby-48455-fix-riscv64-seccomp.patch \
 	containerd-arm64-v8.patch \
 	git-no-submodules.patch \
 	mips64le.patch \
 	noclip.patch \
+	nolint.patch \
 	/tmp/buildkit-patches/
 
 WORKDIR /app
 
 RUN set -eux; \
 	git clone --branch "v$BUILDKIT_VERSION" --depth 1 --config advice.detachedHead=false 'https://github.com/moby/buildkit.git' .; \
-	git apply /tmp/buildkit-patches/*.patch; \
+	for patch in /tmp/buildkit-patches/*.patch; do \
+		git apply --verbose "$patch"; \
+	done; \
 	git diff --color
 
 ENV CGO_ENABLED 0
@@ -31,12 +34,13 @@ ARG TARGETOS TARGETARCH TARGETVARIANT
 ENV GOOS=$TARGETOS GOARCH=$TARGETARCH VARIANT=$TARGETVARIANT
 
 RUN set -eux; \
-	case "$GOARCH" in \
-		arm) export GOARM="${VARIANT#v}" ;; \
-		amd64) export GOAMD64="$VARIANT" ;; \
+	case "$GOARCH/$VARIANT" in \
+		amd64/*) export GOAMD64="$VARIANT" ;; \
+		arm/*) export GOARM="${VARIANT#v}" ;; \
+		arm64/v8) ;; \
 		*) [ -z "$VARIANT" ] ;; \
 	esac; \
-	go env | grep -E 'OS=|ARCH=|ARM=|AMD64='; \
+	go env | grep -E 'OS=|ARCH=|AMD64=|ARM64=|ARM='; \
 	\
 # https://github.com/moby/buildkit/blob/v0.13.2/Dockerfile#L93
 	pkg='github.com/moby/buildkit'; \

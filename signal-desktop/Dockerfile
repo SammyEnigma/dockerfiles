@@ -4,7 +4,7 @@
 # PLEASE DO NOT EDIT IT DIRECTLY.
 #
 
-FROM debian:bullseye-slim
+FROM debian:bookworm-slim
 
 RUN set -eux; \
 	apt-get update; \
@@ -32,7 +32,7 @@ RUN set -eux; \
 	rm -rf /var/lib/apt/lists/*
 
 # https://github.com/signalapp/Signal-Desktop/releases
-ENV SIGNAL_DESKTOP_VERSION 7.14.0
+ENV SIGNAL_DESKTOP_VERSION 7.30.0
 
 RUN set -eux; \
 	apt-get update; \
