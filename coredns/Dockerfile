@@ -7,18 +7,18 @@
 FROM debian:bookworm-slim
 
 # https://github.com/coredns/coredns/releases
-ENV COREDNS_VERSION 1.12.2
+ENV COREDNS_VERSION 1.11.4
 
 RUN set -eux; \
 	\
 	dpkgArch="$(dpkg --print-architecture)"; \
 	case "$dpkgArch" in \
-		'amd64') url='https://github.com/coredns/coredns/releases/download/v1.12.2/coredns_1.12.2_linux_amd64.tgz'; sha256='95c03c2e8ef56e2ec3cfbb2970504d7abdc07666b9dde8c5dc9d72d34dff756e' ;; \
-		'arm64') url='https://github.com/coredns/coredns/releases/download/v1.12.2/coredns_1.12.2_linux_arm64.tgz'; sha256='3e2117d24e7e0292d60578809ce4ad1e517cd957bffe595241826cff6cdb6c9b' ;; \
-		'mips64el') url='https://github.com/coredns/coredns/releases/download/v1.12.2/coredns_1.12.2_linux_mips64le.tgz'; sha256='ee35955c7220940c7341b4ecb7de086bfbf5c3ca41b0f74c443da08098f5f2d0' ;; \
-		'ppc64el') url='https://github.com/coredns/coredns/releases/download/v1.12.2/coredns_1.12.2_linux_ppc64le.tgz'; sha256='cd0ee03fe19af4f9684ea1e4f37dd496526a9dd92d9345b9cadb0ecc27fe11c4' ;; \
-		'riscv64') url='https://github.com/coredns/coredns/releases/download/v1.12.2/coredns_1.12.2_linux_riscv64.tgz'; sha256='f2a88f7da84be6a7938510e17bd1fad0a371c7bcc9ba7e79bf705d287a80220f' ;; \
-		's390x') url='https://github.com/coredns/coredns/releases/download/v1.12.2/coredns_1.12.2_linux_s390x.tgz'; sha256='1b731c5e62fadc2bd9395cf2a4a8917d4732ba94912732274395a0a48066cbe8' ;; \
+		'amd64') url='https://github.com/coredns/coredns/releases/download/v1.11.4/coredns_1.11.4_linux_amd64.tgz'; sha256='3dd1b565a6b72e04f7c19dc461ffcc7b8e013d520569aa163312384a5be307e5' ;; \
+		'arm64') url='https://github.com/coredns/coredns/releases/download/v1.11.4/coredns_1.11.4_linux_arm64.tgz'; sha256='54cf9dd7c2af46072b12e8bf0412a2f2d42098064ed2d75d746028b73ede455d' ;; \
+		'mips64el') url='https://github.com/coredns/coredns/releases/download/v1.11.4/coredns_1.11.4_linux_mips64le.tgz'; sha256='a8d8f74b77b05479da91e70be2649ed8f0341b79ae7c0f6cc7c3ef7dfabe5ce1' ;; \
+		'ppc64el') url='https://github.com/coredns/coredns/releases/download/v1.11.4/coredns_1.11.4_linux_ppc64le.tgz'; sha256='bd0c76587bc8f4907d1b5d27963f9f38b72c79c922ecb94f7dcc40d723b051d6' ;; \
+		'riscv64') url='https://github.com/coredns/coredns/releases/download/v1.11.4/coredns_1.11.4_linux_riscv64.tgz'; sha256='7625961011878d0dcdf9ddd06d5b3875682f4654450c5ff61c213a83c88ce0f3' ;; \
+		's390x') url='https://github.com/coredns/coredns/releases/download/v1.11.4/coredns_1.11.4_linux_s390x.tgz'; sha256='083c26a3f821d66275d4cd4cad8767baab8b95810ffdf05b88115393d1d4c090' ;; \
 		*) echo >&2 "error: unsupported architecture '$dpkgArch'"; exit 1 ;; \
 	esac; \
 	\
